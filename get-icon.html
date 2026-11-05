@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generate Icon</title>
+</head>
+<body style="font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: #0f172a; color: white;">
+  <h2>Your Extension Icon</h2>
+  <canvas id="c" width="128" height="128" style="border-radius: 26px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);"></canvas>
+  <br>
+  <button id="dl" style="padding: 12px 24px; font-size: 15px; font-weight: bold; background: #2563eb; color: white; border: none; border-radius: 8px; cursor: pointer;">
+    ⬇ Download icon.png
+  </button>
+
+  <script>
+    const canvas = document.getElementById("c");
+    const ctx = canvas.getContext("2d");
+
+    // 1. خلفية متدرجة عصرية (Modern Gradient)
+    const grad = ctx.createLinearGradient(0, 0, 128, 128);
+    grad.addColorStop(0, "#2563eb");
+    grad.addColorStop(1, "#1e1b4b");
+    
+    // زوايا دائرية (Rounded Squircle)
+    ctx.beginPath();
+    ctx.roundRect(0, 0, 128, 128, 28);
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    // 2. إطار خفيف كيبين Screenshot Frame
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.25)";
+    ctx.lineWidth = 4;
+    ctx.strokeRect(16, 16, 96, 96);
+
+    // 3. رسم الكاميرا فالوسط
+    ctx.fillStyle = "#ffffff";
+    
+    // رأس الكاميرا
+    ctx.beginPath();
+    ctx.roundRect(50, 36, 28, 10, 4);
+    ctx.fill();
+
+    // جسم الكاميرا
+    ctx.beginPath();
+    ctx.roundRect(30, 44, 68, 48, 12);
+    ctx.fill();
+
+    // العدسة الخارجية (Dark Lens)
+    ctx.beginPath();
+    ctx.arc(64, 68, 18, 0, Math.PI * 2);
+    ctx.fillStyle = "#1e293b";
+    ctx.fill();
+
+    // لمعان العدسة الداخلي
+    ctx.beginPath();
+    ctx.arc(64, 68, 11, 0, Math.PI * 2);
+    ctx.fillStyle = "#38bdf8";
+    ctx.fill();
+
+    // فلاش صغير
+    ctx.beginPath();
+    ctx.arc(86, 52, 3, 0, Math.PI * 2);
+    ctx.fillStyle = "#fbbf24";
+    ctx.fill();
+
+    // كليك للتحميل
+    document.getElementById("dl").onclick = () => {
+      const a = document.createElement("a");
+      a.href = canvas.toDataURL("image/png");
+      a.download = "icon.png";
+      a.click();
+    };
+  </script>
+</body>
+</html>

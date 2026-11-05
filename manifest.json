@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "FullPage Screen Capture",
+  "version": "2.2",
+  "description": "Full page screenshot tool with live progress",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "scripting",
+    "storage",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Capture Full Page",
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
